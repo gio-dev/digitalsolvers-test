@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="sitedefault" defaultIdMethod="native" baseClass="edefault.class.EDBase" tablePrefix="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://svn.propelorm.org/branches/1.6/generator/resources/xsd/database.xsd">
+
+    <table name="perguntas" phpName="Perguntas">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="PERGUNTA" type="LONGVARCHAR" required="true" />
+        <column name="CREATED_AT" type="timestamp" />
+        <column name="UPDATED_AT" type="timestamp" />
+
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="CREATED_AT"/>
+            <parameter name="update_column" value="UPDATED_AT"/>
+        </behavior>
+    </table>
+
+    <table name="respostas" phpName="Respostas">
+        <column name="ID" sqlType="BIGINT(20) UNSIGNED" primaryKey="true" autoIncrement="true" required="true" />
+        <column name="SESSION_ID" type="VARCHAR" size="255" required="true" />
+        <column name="IP" type="VARCHAR" size="255" required="true" />
+        <column name="RESPOSTAS" type="LONGVARCHAR" required="true" />
+        <column name="CREATED_AT" type="timestamp" />
+        <column name="UPDATED_AT" type="timestamp" />
+
+        <behavior name="timestampable">
+            <parameter name="add_columns" value="false"/>
+            <parameter name="create_column" value="CREATED_AT"/>
+            <parameter name="update_column" value="UPDATED_AT"/>
+        </behavior>
+    </table>
+
+</database>

@@ -1,0 +1,36 @@
+@import url("https://use.typekit.net/chg2mjs.css");
+body {
+  font-family: quatro, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+body .breadcrumb-nav {
+  background-color: #e9ecef;
+}
+body .breadcrumb-nav .breadcrumb {
+  background: none;
+  margin-bottom: 0;
+  padding: 0.75rem 0;
+}
+body .breadcrumb-nav .breadcrumb .breadcrumb-item {
+  font-size: 12px;
+}
+body .breadcrumb-nav .breadcrumb .breadcrumb-item a {
+  font-size: 12px;
+}
+body .page-head .page-heading h2 {
+  float: left;
+  margin: 0;
+  line-height: 32px;
+  font-weight: 300;
+  font-size: 24px;
+  color: #616161;
+}
+body footer {
+  font-size: 12px;
+  color: #494948;
+  background-color: #f8f9fa !important;
+  line-height: 1;
+}
+/*# sourceMappingURL=style_geral.css.map */

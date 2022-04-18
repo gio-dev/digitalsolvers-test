@@ -1,0 +1,8 @@
+{
+    "autoload":{
+        "classmap": ["models"]
+    },
+    "require": {
+        "propel/propel1": "~2.0@dev"
+    }
+}
