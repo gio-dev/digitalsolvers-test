@@ -24,13 +24,13 @@ abstract class BaseRespostasPeer
     const TM_CLASS = 'RespostasTableMap';
 
     /** The total number of columns. */
-    const NUM_COLUMNS = 6;
+    const NUM_COLUMNS = 7;
 
     /** The number of lazy-loaded columns. */
     const NUM_LAZY_LOAD_COLUMNS = 0;
 
     /** The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS) */
-    const NUM_HYDRATE_COLUMNS = 6;
+    const NUM_HYDRATE_COLUMNS = 7;
 
     /** the column name for the ID field */
     const ID = 'respostas.ID';
@@ -43,6 +43,9 @@ abstract class BaseRespostasPeer
 
     /** the column name for the RESPOSTAS field */
     const RESPOSTAS = 'respostas.RESPOSTAS';
+
+    /** the column name for the RESULTADOS field */
+    const RESULTADOS = 'respostas.RESULTADOS';
 
     /** the column name for the CREATED_AT field */
     const CREATED_AT = 'respostas.CREATED_AT';
@@ -69,12 +72,12 @@ abstract class BaseRespostasPeer
      * e.g. RespostasPeer::$fieldNames[RespostasPeer::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        BasePeer::TYPE_PHPNAME => array ('Id', 'SessionId', 'Ip', 'Respostas', 'CreatedAt', 'UpdatedAt', ),
-        BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'sessionId', 'ip', 'respostas', 'createdAt', 'updatedAt', ),
-        BasePeer::TYPE_COLNAME => array (RespostasPeer::ID, RespostasPeer::SESSION_ID, RespostasPeer::IP, RespostasPeer::RESPOSTAS, RespostasPeer::CREATED_AT, RespostasPeer::UPDATED_AT, ),
-        BasePeer::TYPE_RAW_COLNAME => array ('ID', 'SESSION_ID', 'IP', 'RESPOSTAS', 'CREATED_AT', 'UPDATED_AT', ),
-        BasePeer::TYPE_FIELDNAME => array ('ID', 'SESSION_ID', 'IP', 'RESPOSTAS', 'CREATED_AT', 'UPDATED_AT', ),
-        BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
+        BasePeer::TYPE_PHPNAME => array ('Id', 'SessionId', 'Ip', 'Respostas', 'Resultados', 'CreatedAt', 'UpdatedAt', ),
+        BasePeer::TYPE_STUDLYPHPNAME => array ('id', 'sessionId', 'ip', 'respostas', 'resultados', 'createdAt', 'updatedAt', ),
+        BasePeer::TYPE_COLNAME => array (RespostasPeer::ID, RespostasPeer::SESSION_ID, RespostasPeer::IP, RespostasPeer::RESPOSTAS, RespostasPeer::RESULTADOS, RespostasPeer::CREATED_AT, RespostasPeer::UPDATED_AT, ),
+        BasePeer::TYPE_RAW_COLNAME => array ('ID', 'SESSION_ID', 'IP', 'RESPOSTAS', 'RESULTADOS', 'CREATED_AT', 'UPDATED_AT', ),
+        BasePeer::TYPE_FIELDNAME => array ('ID', 'SESSION_ID', 'IP', 'RESPOSTAS', 'RESULTADOS', 'CREATED_AT', 'UPDATED_AT', ),
+        BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
     );
 
     /**
@@ -84,12 +87,12 @@ abstract class BaseRespostasPeer
      * e.g. RespostasPeer::$fieldNames[BasePeer::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'SessionId' => 1, 'Ip' => 2, 'Respostas' => 3, 'CreatedAt' => 4, 'UpdatedAt' => 5, ),
-        BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'sessionId' => 1, 'ip' => 2, 'respostas' => 3, 'createdAt' => 4, 'updatedAt' => 5, ),
-        BasePeer::TYPE_COLNAME => array (RespostasPeer::ID => 0, RespostasPeer::SESSION_ID => 1, RespostasPeer::IP => 2, RespostasPeer::RESPOSTAS => 3, RespostasPeer::CREATED_AT => 4, RespostasPeer::UPDATED_AT => 5, ),
-        BasePeer::TYPE_RAW_COLNAME => array ('ID' => 0, 'SESSION_ID' => 1, 'IP' => 2, 'RESPOSTAS' => 3, 'CREATED_AT' => 4, 'UPDATED_AT' => 5, ),
-        BasePeer::TYPE_FIELDNAME => array ('ID' => 0, 'SESSION_ID' => 1, 'IP' => 2, 'RESPOSTAS' => 3, 'CREATED_AT' => 4, 'UPDATED_AT' => 5, ),
-        BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, )
+        BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'SessionId' => 1, 'Ip' => 2, 'Respostas' => 3, 'Resultados' => 4, 'CreatedAt' => 5, 'UpdatedAt' => 6, ),
+        BasePeer::TYPE_STUDLYPHPNAME => array ('id' => 0, 'sessionId' => 1, 'ip' => 2, 'respostas' => 3, 'resultados' => 4, 'createdAt' => 5, 'updatedAt' => 6, ),
+        BasePeer::TYPE_COLNAME => array (RespostasPeer::ID => 0, RespostasPeer::SESSION_ID => 1, RespostasPeer::IP => 2, RespostasPeer::RESPOSTAS => 3, RespostasPeer::RESULTADOS => 4, RespostasPeer::CREATED_AT => 5, RespostasPeer::UPDATED_AT => 6, ),
+        BasePeer::TYPE_RAW_COLNAME => array ('ID' => 0, 'SESSION_ID' => 1, 'IP' => 2, 'RESPOSTAS' => 3, 'RESULTADOS' => 4, 'CREATED_AT' => 5, 'UPDATED_AT' => 6, ),
+        BasePeer::TYPE_FIELDNAME => array ('ID' => 0, 'SESSION_ID' => 1, 'IP' => 2, 'RESPOSTAS' => 3, 'RESULTADOS' => 4, 'CREATED_AT' => 5, 'UPDATED_AT' => 6, ),
+        BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, )
     );
 
     /**
@@ -167,6 +170,7 @@ abstract class BaseRespostasPeer
             $criteria->addSelectColumn(RespostasPeer::SESSION_ID);
             $criteria->addSelectColumn(RespostasPeer::IP);
             $criteria->addSelectColumn(RespostasPeer::RESPOSTAS);
+            $criteria->addSelectColumn(RespostasPeer::RESULTADOS);
             $criteria->addSelectColumn(RespostasPeer::CREATED_AT);
             $criteria->addSelectColumn(RespostasPeer::UPDATED_AT);
         } else {
@@ -174,6 +178,7 @@ abstract class BaseRespostasPeer
             $criteria->addSelectColumn($alias . '.SESSION_ID');
             $criteria->addSelectColumn($alias . '.IP');
             $criteria->addSelectColumn($alias . '.RESPOSTAS');
+            $criteria->addSelectColumn($alias . '.RESULTADOS');
             $criteria->addSelectColumn($alias . '.CREATED_AT');
             $criteria->addSelectColumn($alias . '.UPDATED_AT');
         }

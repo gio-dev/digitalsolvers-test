@@ -10,6 +10,7 @@
  * @method RespostasQuery orderBySessionId($order = Criteria::ASC) Order by the SESSION_ID column
  * @method RespostasQuery orderByIp($order = Criteria::ASC) Order by the IP column
  * @method RespostasQuery orderByRespostas($order = Criteria::ASC) Order by the RESPOSTAS column
+ * @method RespostasQuery orderByResultados($order = Criteria::ASC) Order by the RESULTADOS column
  * @method RespostasQuery orderByCreatedAt($order = Criteria::ASC) Order by the CREATED_AT column
  * @method RespostasQuery orderByUpdatedAt($order = Criteria::ASC) Order by the UPDATED_AT column
  *
@@ -17,6 +18,7 @@
  * @method RespostasQuery groupBySessionId() Group by the SESSION_ID column
  * @method RespostasQuery groupByIp() Group by the IP column
  * @method RespostasQuery groupByRespostas() Group by the RESPOSTAS column
+ * @method RespostasQuery groupByResultados() Group by the RESULTADOS column
  * @method RespostasQuery groupByCreatedAt() Group by the CREATED_AT column
  * @method RespostasQuery groupByUpdatedAt() Group by the UPDATED_AT column
  *
@@ -31,6 +33,7 @@
  * @method Respostas findOneBySessionId(string $SESSION_ID) Return the first Respostas filtered by the SESSION_ID column
  * @method Respostas findOneByIp(string $IP) Return the first Respostas filtered by the IP column
  * @method Respostas findOneByRespostas(string $RESPOSTAS) Return the first Respostas filtered by the RESPOSTAS column
+ * @method Respostas findOneByResultados(string $RESULTADOS) Return the first Respostas filtered by the RESULTADOS column
  * @method Respostas findOneByCreatedAt(string $CREATED_AT) Return the first Respostas filtered by the CREATED_AT column
  * @method Respostas findOneByUpdatedAt(string $UPDATED_AT) Return the first Respostas filtered by the UPDATED_AT column
  *
@@ -38,6 +41,7 @@
  * @method array findBySessionId(string $SESSION_ID) Return Respostas objects filtered by the SESSION_ID column
  * @method array findByIp(string $IP) Return Respostas objects filtered by the IP column
  * @method array findByRespostas(string $RESPOSTAS) Return Respostas objects filtered by the RESPOSTAS column
+ * @method array findByResultados(string $RESULTADOS) Return Respostas objects filtered by the RESULTADOS column
  * @method array findByCreatedAt(string $CREATED_AT) Return Respostas objects filtered by the CREATED_AT column
  * @method array findByUpdatedAt(string $UPDATED_AT) Return Respostas objects filtered by the UPDATED_AT column
  *
@@ -129,7 +133,7 @@ abstract class BaseRespostasQuery extends ModelCriteria
      */
     protected function findPkSimple($key, $con)
     {
-        $sql = 'SELECT `ID`, `SESSION_ID`, `IP`, `RESPOSTAS`, `CREATED_AT`, `UPDATED_AT` FROM `respostas` WHERE `ID` = :p0';
+        $sql = 'SELECT `ID`, `SESSION_ID`, `IP`, `RESPOSTAS`, `RESULTADOS`, `CREATED_AT`, `UPDATED_AT` FROM `respostas` WHERE `ID` = :p0';
         try {
             $stmt = $con->prepare($sql);			
             $stmt->bindValue(':p0', $key, PDO::PARAM_STR);
@@ -332,6 +336,35 @@ abstract class BaseRespostasQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(RespostasPeer::RESPOSTAS, $respostas, $comparison);
+    }
+
+    /**
+     * Filter the query on the RESULTADOS column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByResultados('fooValue');   // WHERE RESULTADOS = 'fooValue'
+     * $query->filterByResultados('%fooValue%'); // WHERE RESULTADOS LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $resultados The value to use as filter.
+     *              Accepts wildcards (* and % trigger a LIKE)
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return RespostasQuery The current query, for fluid interface
+     */
+    public function filterByResultados($resultados = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($resultados)) {
+                $comparison = Criteria::IN;
+            } elseif (preg_match('/[\%\*]/', $resultados)) {
+                $resultados = str_replace('*', '%', $resultados);
+                $comparison = Criteria::LIKE;
+            }
+        }
+
+        return $this->addUsingAlias(RespostasPeer::RESULTADOS, $resultados, $comparison);
     }
 
     /**

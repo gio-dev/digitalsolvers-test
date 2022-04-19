@@ -54,6 +54,12 @@ abstract class BaseRespostas extends EDBase implements Persistent
     protected $respostas;
 
     /**
+     * The value for the resultados field.
+     * @var        string
+     */
+    protected $resultados;
+
+    /**
      * The value for the created_at field.
      * @var        string
      */
@@ -117,6 +123,16 @@ abstract class BaseRespostas extends EDBase implements Persistent
     public function getRespostas()
     {
         return $this->respostas;
+    }
+
+    /**
+     * Get the [resultados] column value.
+     * 
+     * @return string
+     */
+    public function getResultados()
+    {
+        return $this->resultados;
     }
 
     /**
@@ -278,6 +294,27 @@ abstract class BaseRespostas extends EDBase implements Persistent
     } // setRespostas()
 
     /**
+     * Set the value of [resultados] column.
+     * 
+     * @param string $v new value
+     * @return Respostas The current object (for fluent API support)
+     */
+    public function setResultados($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->resultados !== $v) {
+            $this->resultados = $v;
+            $this->modifiedColumns[] = RespostasPeer::RESULTADOS;
+        }
+
+
+        return $this;
+    } // setResultados()
+
+    /**
      * Sets the value of [created_at] column to a normalized version of the date/time value specified.
      * 
      * @param mixed $v string, integer (timestamp), or DateTime value.
@@ -359,8 +396,9 @@ abstract class BaseRespostas extends EDBase implements Persistent
             $this->session_id = ($row[$startcol + 1] !== null) ? (string) $row[$startcol + 1] : null;
             $this->ip = ($row[$startcol + 2] !== null) ? (string) $row[$startcol + 2] : null;
             $this->respostas = ($row[$startcol + 3] !== null) ? (string) $row[$startcol + 3] : null;
-            $this->created_at = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
-            $this->updated_at = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
+            $this->resultados = ($row[$startcol + 4] !== null) ? (string) $row[$startcol + 4] : null;
+            $this->created_at = ($row[$startcol + 5] !== null) ? (string) $row[$startcol + 5] : null;
+            $this->updated_at = ($row[$startcol + 6] !== null) ? (string) $row[$startcol + 6] : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -369,7 +407,7 @@ abstract class BaseRespostas extends EDBase implements Persistent
                 $this->ensureConsistency();
             }
 
-            return $startcol + 6; // 6 = RespostasPeer::NUM_HYDRATE_COLUMNS.
+            return $startcol + 7; // 7 = RespostasPeer::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException("Error populating Respostas object", $e);
@@ -604,6 +642,9 @@ abstract class BaseRespostas extends EDBase implements Persistent
         if ($this->isColumnModified(RespostasPeer::RESPOSTAS)) {
             $modifiedColumns[':p' . $index++]  = '`RESPOSTAS`';
         }
+        if ($this->isColumnModified(RespostasPeer::RESULTADOS)) {
+            $modifiedColumns[':p' . $index++]  = '`RESULTADOS`';
+        }
         if ($this->isColumnModified(RespostasPeer::CREATED_AT)) {
             $modifiedColumns[':p' . $index++]  = '`CREATED_AT`';
         }
@@ -632,6 +673,9 @@ abstract class BaseRespostas extends EDBase implements Persistent
                         break;
                     case '`RESPOSTAS`':						
                         $stmt->bindValue($identifier, $this->respostas, PDO::PARAM_STR);
+                        break;
+                    case '`RESULTADOS`':						
+                        $stmt->bindValue($identifier, $this->resultados, PDO::PARAM_STR);
                         break;
                     case '`CREATED_AT`':						
                         $stmt->bindValue($identifier, $this->created_at, PDO::PARAM_STR);
@@ -786,9 +830,12 @@ abstract class BaseRespostas extends EDBase implements Persistent
                 return $this->getRespostas();
                 break;
             case 4:
-                return $this->getCreatedAt();
+                return $this->getResultados();
                 break;
             case 5:
+                return $this->getCreatedAt();
+                break;
+            case 6:
                 return $this->getUpdatedAt();
                 break;
             default:
@@ -823,8 +870,9 @@ abstract class BaseRespostas extends EDBase implements Persistent
             $keys[1] => $this->getSessionId(),
             $keys[2] => $this->getIp(),
             $keys[3] => $this->getRespostas(),
-            $keys[4] => $this->getCreatedAt(),
-            $keys[5] => $this->getUpdatedAt(),
+            $keys[4] => $this->getResultados(),
+            $keys[5] => $this->getCreatedAt(),
+            $keys[6] => $this->getUpdatedAt(),
         );
 
         return $result;
@@ -872,9 +920,12 @@ abstract class BaseRespostas extends EDBase implements Persistent
                 $this->setRespostas($value);
                 break;
             case 4:
-                $this->setCreatedAt($value);
+                $this->setResultados($value);
                 break;
             case 5:
+                $this->setCreatedAt($value);
+                break;
+            case 6:
                 $this->setUpdatedAt($value);
                 break;
         } // switch()
@@ -905,8 +956,9 @@ abstract class BaseRespostas extends EDBase implements Persistent
         if (array_key_exists($keys[1], $arr)) $this->setSessionId($arr[$keys[1]]);
         if (array_key_exists($keys[2], $arr)) $this->setIp($arr[$keys[2]]);
         if (array_key_exists($keys[3], $arr)) $this->setRespostas($arr[$keys[3]]);
-        if (array_key_exists($keys[4], $arr)) $this->setCreatedAt($arr[$keys[4]]);
-        if (array_key_exists($keys[5], $arr)) $this->setUpdatedAt($arr[$keys[5]]);
+        if (array_key_exists($keys[4], $arr)) $this->setResultados($arr[$keys[4]]);
+        if (array_key_exists($keys[5], $arr)) $this->setCreatedAt($arr[$keys[5]]);
+        if (array_key_exists($keys[6], $arr)) $this->setUpdatedAt($arr[$keys[6]]);
     }
 
     /**
@@ -922,6 +974,7 @@ abstract class BaseRespostas extends EDBase implements Persistent
         if ($this->isColumnModified(RespostasPeer::SESSION_ID)) $criteria->add(RespostasPeer::SESSION_ID, $this->session_id);
         if ($this->isColumnModified(RespostasPeer::IP)) $criteria->add(RespostasPeer::IP, $this->ip);
         if ($this->isColumnModified(RespostasPeer::RESPOSTAS)) $criteria->add(RespostasPeer::RESPOSTAS, $this->respostas);
+        if ($this->isColumnModified(RespostasPeer::RESULTADOS)) $criteria->add(RespostasPeer::RESULTADOS, $this->resultados);
         if ($this->isColumnModified(RespostasPeer::CREATED_AT)) $criteria->add(RespostasPeer::CREATED_AT, $this->created_at);
         if ($this->isColumnModified(RespostasPeer::UPDATED_AT)) $criteria->add(RespostasPeer::UPDATED_AT, $this->updated_at);
 
@@ -990,6 +1043,7 @@ abstract class BaseRespostas extends EDBase implements Persistent
         $copyObj->setSessionId($this->getSessionId());
         $copyObj->setIp($this->getIp());
         $copyObj->setRespostas($this->getRespostas());
+        $copyObj->setResultados($this->getResultados());
         $copyObj->setCreatedAt($this->getCreatedAt());
         $copyObj->setUpdatedAt($this->getUpdatedAt());
         if ($makeNew) {
@@ -1047,6 +1101,7 @@ abstract class BaseRespostas extends EDBase implements Persistent
         $this->session_id = null;
         $this->ip = null;
         $this->respostas = null;
+        $this->resultados = null;
         $this->created_at = null;
         $this->updated_at = null;
         $this->alreadyInSave = false;

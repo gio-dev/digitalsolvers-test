@@ -130,31 +130,3 @@ define('UF',
 		)
 	)
 );
-
-define("EMPRESA", 'Ask Scale | Método e Tecnologia Gerando Resultado');
-define("THEME_COLOR", '#2dec47');
-define("TITLE", 'Ask Scale | Método e Tecnologia Gerando Resultado');
-define("DESCRIPTION", 'Ask Scale | Método e Tecnologia Gerando Resultado');
-define("KEYWORDS", 'ask, askscale, scale, escalabilidade, receita previsível, selling machine, software, software house, app, mobile, fabrica de software, método, webscraping, telefonia, informação, resultado, seo, marketing, processos, mapeamento, escala, receita, previsível, selling, integração, api');
-define("AUTHOR", 'Giovan Dias');
-define("MODEL", 'website');
-define("LOGO_META", BASE_URL.'assets/img/logov3.jpg');
-define("FAVICON", BASE_URL.'assets/img/iconv3.png');
-define("BASE_URL_META", $scheme.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-
-define("CACHE_DIR", 'uploads/resize/');
-define("EMAIL_MODEL", 'phpmailer'); //['phpmailer', 'codeigniter', 'server']
-
-/****** ENVIO DE E-MAILS SMTP ******/
-
-
-define("FROM_EMAIL", "mail@askscale.com.br");
-define("EMAIL_NAME", "Ask Scale");
-
-define("EMAIL_DEV", "giovan@askscale.com.br");
-
-define("SMTP_HOST", "smtp.kinghost.net");
-define("SMTP_USER", "mail@askscale.com.br");
-define("SMTP_PASS", "Y6Kua@W_RSTrENx");
-define("SMTP_PORT", 465);
-define("SMTP_CRYP", 'ssl');

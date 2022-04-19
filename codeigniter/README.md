@@ -14,8 +14,8 @@ Teste Digital Solves
 
 
 * PHP - Framework Codeigniter
-* Bootstrap 5
+* Bootstrap 4
 * CSS3 + HTML5 + JS/JQuery
 * ORM - Propel
 
-Tempo de desenvolvimento: 6 horas.
+Tempo de desenvolvimento: 3h40m.

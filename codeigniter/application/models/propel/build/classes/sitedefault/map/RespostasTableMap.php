@@ -42,6 +42,7 @@ class RespostasTableMap extends TableMap
         $this->addColumn('SESSION_ID', 'SessionId', 'VARCHAR', true, 255, null);
         $this->addColumn('IP', 'Ip', 'VARCHAR', true, 255, null);
         $this->addColumn('RESPOSTAS', 'Respostas', 'LONGVARCHAR', true, null, null);
+        $this->addColumn('RESULTADOS', 'Resultados', 'VARCHAR', false, 255, null);
         $this->addColumn('CREATED_AT', 'CreatedAt', 'TIMESTAMP', false, null, null);
         $this->addColumn('UPDATED_AT', 'UpdatedAt', 'TIMESTAMP', false, null, null);
         // validators

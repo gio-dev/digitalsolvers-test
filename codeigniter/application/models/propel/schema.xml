@@ -19,6 +19,7 @@
         <column name="SESSION_ID" type="VARCHAR" size="255" required="true" />
         <column name="IP" type="VARCHAR" size="255" required="true" />
         <column name="RESPOSTAS" type="LONGVARCHAR" required="true" />
+        <column name="RESULTADOS" type="VARCHAR" size="255" required="false" />
         <column name="CREATED_AT" type="timestamp" />
         <column name="UPDATED_AT" type="timestamp" />
 

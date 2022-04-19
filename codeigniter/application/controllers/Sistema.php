@@ -33,18 +33,28 @@ class Sistema extends CI_Controller {
                 $objResposta->save();
                 session_regenerate_id();
                 $results = [];
+                $resultsSimple = [];
                 if(!toBoolean($arrValues[0]) && !toBoolean($arrValues[3]) && !toBoolean($arrValues[4])){
                     $results[] = 'Resultado A alcançado!';
+                    $resultsSimple[] = 'A';
                 }
                 if(
                     toBoolean($arrValues[0]) && toBoolean($arrValues[1]) && toBoolean($arrValues[2])
                     && toBoolean($arrValues[3]) && toBoolean($arrValues[4]) && toBoolean($arrValues[5])
                 ){
-                    $results[] = 'Resultado B Alcançado!';
                     $results[] = 'Resultado C Alcançado!';
+                    $resultsSimple[] = 'C';
+                }
+                if(
+                    !toBoolean($arrValues[0]) && !toBoolean($arrValues[1]) && !toBoolean($arrValues[2])
+                    && !toBoolean($arrValues[3]) && !toBoolean($arrValues[4]) && !toBoolean($arrValues[5])
+                ){
+                    $results[] = 'Resultado B Alcançado!';
+                    $resultsSimple[] = 'B';
                 }
                 if(count($results) > 0){
-
+                    $objResposta->setResultados(join(',',$resultsSimple));
+                    $objResposta->save();
                     $this->session->set_flashdata('success', $results);
 
                 } else {
